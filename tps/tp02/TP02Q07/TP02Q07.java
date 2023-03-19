@@ -174,8 +174,6 @@ public class TP02Q07 {
 
         String caminhoArquivo = MyIO.readLine().replaceAll("é", "\u00e9");
 
-        RandomAccessFile leitura = new RandomAccessFile(caminhoArquivo, "r");
-
         // Testar fim da primeira parte do arquivo
         while (testaFim(caminhoArquivo) == false) {
 
@@ -194,8 +192,6 @@ public class TP02Q07 {
 
             nomePersonagem = MyIO.readLine().replaceAll("é", "\u00e9");
         }
-
-        leitura.close();
 
         listaPersonagens.criarLog(tempoInicial); // Passar o tempo de início da execução
     }
