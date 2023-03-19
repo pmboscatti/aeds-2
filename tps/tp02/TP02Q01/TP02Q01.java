@@ -128,10 +128,6 @@ public class TP02Q01 {
                             + " ## " + getCorDaPele() + " ## " + getCorDosOlhos() + " ## " + getAnoNascimento() + " ## "
                             + getGenero() + " ## " + getHomeworld() + " ## ");
         }
-
-        public void ler() {
-
-        }
     }
 
     public static void main(String[] args) throws Exception {
