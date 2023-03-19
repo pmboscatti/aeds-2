@@ -1,0 +1,1 @@
+Matricula: 790052	Numero Comparacoes: 239	Numero de Movimentacoes: 199	Tempo Execucao: 100ms
