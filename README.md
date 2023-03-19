@@ -2,7 +2,7 @@
 
 <p align="center">
 <img src="https://img.shields.io/badge/status-andamento-yellow">
-<img src="https://img.shields.io/badge/last%20modified-14%2F03%2F2023-informational">
+<img src="https://img.shields.io/badge/last%20modified-19%2F03%2F2023-informational">
 </p>
 
 ## :pencil: Descrição do Repositório
@@ -13,7 +13,7 @@ O repositório **Algoritmos e Estruturas de Dados II** é um local para armazena
 
 O exercícios colocados aqui se dividem da seguinte forma:
 
-- `Trabalhos Práticos (TP)`: Listas de exercícios para testar e aplicar conceitos e lógicas de programação.
+- `Trabalhos Práticos (TP):` Listas de exercícios para testar e aplicar conceitos e lógicas de programação.
 
 ## :computer: Linguagens Utilizadas
 
