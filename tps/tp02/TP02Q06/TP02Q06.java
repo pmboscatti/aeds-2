@@ -195,8 +195,6 @@ public class TP02Q06 {
 
         String caminhoArquivo = MyIO.readLine().replaceAll("é", "\u00e9");
 
-        RandomAccessFile leitura = new RandomAccessFile(caminhoArquivo, "r");
-
         // Testar fim da primeira parte do arquivo
         while (testaFim(caminhoArquivo) == false) {
 
@@ -209,8 +207,6 @@ public class TP02Q06 {
         int quantidadeRegistros = MyIO.readInt(); // Ler quantidade de registros a serem inseridos/removidos
 
         analisaOperacoes(quantidadeRegistros, filaPersonagens);
-
-        leitura.close();
 
         filaPersonagens.imprimeResultados();
     }
