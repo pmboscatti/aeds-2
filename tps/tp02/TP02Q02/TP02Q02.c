@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Definição do registro do personagem
+// Definição do registro de personagem
 typedef struct Personagem
 {
     char nome[40];
