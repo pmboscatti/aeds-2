@@ -150,7 +150,7 @@ class Lista {
                 listaPersonagens[posicaoFixa] = listaPersonagens[menor];
                 listaPersonagens[menor] = personagemTemporario;
 
-                numeroMovimentacoes++; // Incrementa o número de movimentações
+                numeroMovimentacoes += 3; // Incrementa o número de movimentações
             }
         }
     }
