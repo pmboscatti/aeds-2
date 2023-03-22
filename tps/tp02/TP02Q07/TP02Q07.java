@@ -139,6 +139,7 @@ class Lista {
         for (int i = 0; i < contadorTamanho; i++) {
             if (nomeRecebido.equals(listaPersonagens[i].getNome())) {
                 nomeEncontrado = true;
+                numeroComparacoes++;
                 i = contadorTamanho; // Interrompe a repetição em caso positivo
             }
 
