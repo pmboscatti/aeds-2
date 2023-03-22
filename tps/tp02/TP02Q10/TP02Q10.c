@@ -145,8 +145,12 @@ void ordenaPorSelecao(Personagem listaPersonagem[], int index, int tamanhoVetor,
 {
     if (index == (tamanhoVetor - 2))
     {
+        *ptrComp += 1;
+
         if (strcmp(listaPersonagem[index].nome, listaPersonagem[index + 1].nome) > 0)
         {
+            *ptrComp += 1;
+            *ptrTroca += 1;
             trocaElementos(listaPersonagem, index, index + 1);
         }
     }
@@ -167,6 +171,7 @@ void ordenaPorSelecao(Personagem listaPersonagem[], int index, int tamanhoVetor,
         if (menor != index)
         {
             *ptrTroca += 1;
+
             trocaElementos(listaPersonagem, index, menor);
         }
 
