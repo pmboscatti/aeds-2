@@ -173,6 +173,7 @@ int main(void)
         // Realiza pesquisa binária
         while (esquerda <= direita)
         {
+            numeroComparacoes++;
             meio = (esquerda + direita) / 2;
 
             if ((strcmp(nomePersonagem, listaPersonagem[meio].nome)) == 0)
@@ -200,6 +201,8 @@ int main(void)
         scanf(" %[^\n]s", nomePersonagem);
         getchar();
     }
+
+    numeroComparacoes++; // Comparação ao não entrar no loop
 
     criarLog(inicio, numeroComparacoes);
 
