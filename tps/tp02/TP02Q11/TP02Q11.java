@@ -132,7 +132,7 @@ class Lista {
         contadorTamanho++; // Incrementar o tamanho do vetor
     }
 
-    // // Ordenar o vetor por Inserção
+    // Ordenar o vetor por Inserção
     public void ordenaPorInsercao() {
         for (int i = 1; i < contadorTamanho; i++) {
             Personagem personagemTemporario = listaPersonagens[i];
@@ -140,7 +140,7 @@ class Lista {
 
             while ((j >= 0) && ((listaPersonagens[j].getAnoNascimento())
                     .compareTo(personagemTemporario.getAnoNascimento()) > 0)) {
-                numeroComparacoes++; // Incrementa uma comparação caso entre na repetição
+                numeroComparacoes += 2; // Incrementa duas comparações caso entre na repetição
                 numeroMovimentacoes++;
 
                 listaPersonagens[j + 1] = listaPersonagens[j];
@@ -148,6 +148,8 @@ class Lista {
             }
 
             numeroComparacoes++; // Incrementa uma comparação caso não entre na repetição
+
+            numeroMovimentacoes++; // Incrementa uma movimentação no acréscimo do temporário ao vetor
 
             listaPersonagens[j + 1] = personagemTemporario;
         }
@@ -166,11 +168,7 @@ class Lista {
             MyIO.print(" ## " + listaPersonagens[i].getCorDoCabelo());
             MyIO.print(" ## " + listaPersonagens[i].getCorDaPele());
             MyIO.print(" ## " + listaPersonagens[i].getCorDosOlhos());
-            if (listaPersonagens[i].getAnoNascimento() == "zzzzz") {
-                MyIO.print(" ## unknown");
-            } else {
-                MyIO.print(" ## " + listaPersonagens[i].getAnoNascimento());
-            }
+            MyIO.print(" ## " + listaPersonagens[i].getAnoNascimento());
             MyIO.print(" ## " + listaPersonagens[i].getGenero());
             MyIO.print(" ## " + listaPersonagens[i].getHomeworld());
             MyIO.println(" ## ");
@@ -268,13 +266,7 @@ public class TP02Q11 {
                         personagem.setCorDosOlhos(leituraAtributo(descricaoPersonagem, i + 3));
                         break;
                     case 7:
-                        String anoNascimento = leituraAtributo(descricaoPersonagem, i + 3);
-
-                        if (anoNascimento.equals("unknown")) {
-                            personagem.setAnoNascimento("zzzzz"); // Obrigar os anos desconhecidos a irem para o final
-                        } else {
-                            personagem.setAnoNascimento(anoNascimento);
-                        }
+                        personagem.setAnoNascimento(leituraAtributo(descricaoPersonagem, i + 3));
                         break;
                     case 8:
                         personagem.setGenero(leituraAtributo(descricaoPersonagem, i + 3));
