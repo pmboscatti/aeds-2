@@ -13,8 +13,8 @@ O repositório **Algoritmos e Estruturas de Dados II** é um local para armazena
 
 O exercícios colocados aqui se dividem da seguinte forma:
 
-- `Trabalhos Práticos (TP):` Listas de exercícios para testar e aplicar conceitos e lógicas de programação.
-- `Maratona:` Exercícios retirados de plataformas digitais, como o Beecrowd, para testar e aplicar conceitos e lógicas de programação.
+- `Maratona:` Exercícios retirados de plataformas digitais para testar e aplicar conceitos e lógicas de programação.
+- `Trabalhos Práticos:` Listas de exercícios para testar e aplicar conceitos e lógicas de programação.
 
 ## :computer: Linguagens Utilizadas
 
