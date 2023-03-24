@@ -116,90 +116,38 @@ public class TP02Q01 {
             return cloned;
         }
 
-        public void imprimirComDouble() {
-            MyIO.println(" ## " + getNome() + " ## " + getAltura() + " ## " + getPeso() + " ## " + getCorDoCabelo()
-                    + " ## " + getCorDaPele() + " ## " + getCorDosOlhos() + " ## " + getAnoNascimento() + " ## "
-                    + getGenero() + " ## " + getHomeworld() + " ## ");
-        }
+        // Imprimir resultados
+        public void imprimeResultados() {
 
-        public void imprimirComInteiro() {
-            MyIO.println(
-                    " ## " + getNome() + " ## " + getAltura() + " ## " + (int) getPeso() + " ## " + getCorDoCabelo()
-                            + " ## " + getCorDaPele() + " ## " + getCorDosOlhos() + " ## " + getAnoNascimento() + " ## "
-                            + getGenero() + " ## " + getHomeworld() + " ## ");
+            MyIO.print(" ## " + getNome());
+            MyIO.print(" ## " + getAltura());
+            if (getPeso() % 1 == 0) {
+                MyIO.print(" ## " + (int) getPeso());
+            } else {
+                MyIO.print(" ## " + getPeso());
+            }
+            MyIO.print(" ## " + getCorDoCabelo());
+            MyIO.print(" ## " + getCorDaPele());
+            MyIO.print(" ## " + getCorDosOlhos());
+            MyIO.print(" ## " + getAnoNascimento());
+            MyIO.print(" ## " + getGenero());
+            MyIO.print(" ## " + getHomeworld());
+            MyIO.println(" ## ");
+
         }
     }
 
     public static void main(String[] args) throws Exception {
         MyIO.setCharset("ISO-8859-1");
 
-        String caminhoArquivo = MyIO.readLine();
+        String caminhoArquivo = MyIO.readLine().replaceAll("é", "\u00e9");
 
         // Testar o fim do arquivo
         while (testaFim(caminhoArquivo) == false) {
-            RandomAccessFile leitura = new RandomAccessFile(caminhoArquivo, "r");
 
-            String descricaoPersonagem = leitura.readLine().replaceAll("é", "\u00e9");
+            Personagem personagem = montaPersonagem(caminhoArquivo);
 
-            Personagem personagem = new Personagem();
-            int contador = 0; // Contar separadores
-
-            for (int i = 0; i < descricaoPersonagem.length(); i++) {
-                if (descricaoPersonagem.charAt(i) == ':') {
-                    contador++;
-
-                    switch (contador) {
-                        case 1:
-                            personagem.setNome(leituraAtributo(descricaoPersonagem, i + 3));
-                            break;
-                        case 2:
-                            String atributoInteiro = leituraAtributo(descricaoPersonagem, i + 3);
-                            if (atributoInteiro.equals("unknown")) {
-                                personagem.setAltura(0);
-                            } else {
-                                personagem.setAltura(Integer.parseInt(atributoInteiro));
-                            }
-                            break;
-                        case 3:
-                            String atributoDouble = leituraAtributo(descricaoPersonagem, i + 3).replaceAll(",", ".");
-                            if (atributoDouble.equals("unknown")) {
-                                personagem.setPeso(0);
-                            } else {
-                                personagem.setPeso(Double.parseDouble(atributoDouble));
-                            }
-                            break;
-                        case 4:
-                            personagem.setCorDoCabelo(leituraAtributo(descricaoPersonagem, i + 3));
-                            break;
-                        case 5:
-                            personagem.setCorDaPele(leituraAtributo(descricaoPersonagem, i + 3));
-                            break;
-                        case 6:
-                            personagem.setCorDosOlhos(leituraAtributo(descricaoPersonagem, i + 3));
-                            break;
-                        case 7:
-                            personagem.setAnoNascimento(leituraAtributo(descricaoPersonagem, i + 3));
-                            break;
-                        case 8:
-                            personagem.setGenero(leituraAtributo(descricaoPersonagem, i + 3));
-                            break;
-                        case 9:
-                            personagem.setHomeworld(leituraAtributo(descricaoPersonagem, i + 3));
-                            i = descricaoPersonagem.length(); // Encerra os ciclos de repetição desnecessários
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-
-            if (personagem.getPeso() % 1 == 0) {
-                personagem.imprimirComInteiro();
-            } else {
-                personagem.imprimirComDouble();
-            }
-
-            leitura.close();
+            personagem.imprimeResultados();
 
             caminhoArquivo = MyIO.readLine().replaceAll("é", "\u00e9");
         }
@@ -214,6 +162,69 @@ public class TP02Q01 {
         }
 
         return teste;
+    }
+
+    // Retornar personagem lido
+    public static Personagem montaPersonagem(String caminhoArquivo) throws Exception {
+        RandomAccessFile leitura = new RandomAccessFile(caminhoArquivo, "r");
+
+        String descricaoPersonagem = leitura.readLine().replaceAll("é", "\u00e9");
+
+        Personagem personagem = new Personagem();
+        int contadorDoisPontos = 0; // Contar separadores
+
+        for (int i = 0; i < descricaoPersonagem.length(); i++) {
+            if (descricaoPersonagem.charAt(i) == ':') {
+                contadorDoisPontos++;
+
+                switch (contadorDoisPontos) {
+                    case 1:
+                        personagem.setNome(leituraAtributo(descricaoPersonagem, i + 3));
+                        break;
+                    case 2:
+                        String atributoInteiro = leituraAtributo(descricaoPersonagem, i + 3);
+                        if (atributoInteiro.equals("unknown")) {
+                            personagem.setAltura(0);
+                        } else {
+                            personagem.setAltura(Integer.parseInt(atributoInteiro));
+                        }
+                        break;
+                    case 3:
+                        String atributoDouble = leituraAtributo(descricaoPersonagem, i + 3).replaceAll(",", "");
+                        if (atributoDouble.equals("unknown")) {
+                            personagem.setPeso(0);
+                        } else {
+                            personagem.setPeso(Double.parseDouble(atributoDouble));
+                        }
+                        break;
+                    case 4:
+                        personagem.setCorDoCabelo(leituraAtributo(descricaoPersonagem, i + 3));
+                        break;
+                    case 5:
+                        personagem.setCorDaPele(leituraAtributo(descricaoPersonagem, i + 3));
+                        break;
+                    case 6:
+                        personagem.setCorDosOlhos(leituraAtributo(descricaoPersonagem, i + 3));
+                        break;
+                    case 7:
+                        personagem.setAnoNascimento(leituraAtributo(descricaoPersonagem, i + 3));
+                        break;
+                    case 8:
+                        personagem.setGenero(leituraAtributo(descricaoPersonagem, i + 3));
+                        break;
+                    case 9:
+                        personagem.setHomeworld(leituraAtributo(descricaoPersonagem, i + 3));
+                        i = descricaoPersonagem.length(); // Encerra os ciclos de repetição desnecessários
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        leitura.close();
+
+        return personagem;
     }
 
     // Retorna o valor do atributo do personagem
